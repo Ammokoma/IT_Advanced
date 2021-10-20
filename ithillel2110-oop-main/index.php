@@ -1,5 +1,6 @@
 <?php
 require __DIR__.'/functions.php';
+require __DIR__.'/lib/BattleManager.php';
 
 $ships = get_ships();
 
