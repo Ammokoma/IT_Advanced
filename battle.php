@@ -2,7 +2,7 @@
 
 require __DIR__ . '/bootstrap.php';
 
-$shipLoader = new ShipLoader();git branch
+$shipLoader = new ShipLoader();
 $ships = $shipLoader->getShips();
 
 $ship1Name = $_POST['ship1_name'] ?? null;
@@ -84,6 +84,12 @@ $outcome = $battleManager->battle($ship1, $ship1Quantity, $ship2, $ship2Quantity
                 Ничья
             <?php
             endif; ?>
+            <br>
+            Здоровье первого корабля:
+            <?php echo $outcome->getWinnerHP()?>
+            <br>
+            Здоровье второго корабля:
+            <?php echo $outcome->getlooserHP()?>
         </h3>
         <p class="text-center">
             <?php

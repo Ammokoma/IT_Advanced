@@ -7,15 +7,34 @@ class BattleResult
     private ?Ship $winner;
     private ?Ship $looser;
     private bool $isJediPowerUsed;
+    private ?int $winnerHP;
+    private ?int $looserHP;
+
+
 
     public function __construct(
         ?Ship $winner,
         ?Ship $looser,
-        bool $isJediPowerUsed
+        bool $isJediPowerUsed,
+        ?int $winnerHP,
+        ?int $looserHP
     ) {
         $this->winner = $winner;
         $this->looser = $looser;
         $this->isJediPowerUsed = $isJediPowerUsed;
+        $this->winnerHP = $winnerHP;
+        $this->looserHP = $looserHP;
+    }
+
+    public function getWinnerHP(): ?int
+    {
+        return $this->winnerHP;
+    }
+
+
+    public function getlooserHP(): ?int
+    {
+        return $this->looserHP;
     }
 
     public function getWinner(): ?Ship
@@ -37,5 +56,7 @@ class BattleResult
     {
         return $this->getWinner() !== null;
     }
+
+
 
 }

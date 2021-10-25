@@ -39,20 +39,28 @@ class BattleManager
             $winningShip = null;
             $losingShip = null;
             $isJediPowerUsed = $ship1UsedJediPowers || $ship2UsedJediPowers;
+            $winnerHP = $ship1Health;
+            $looserHP = $ship2Health;
         } elseif ($ship1Health <= 0) {
             $winningShip = $ship2;
             $losingShip = $ship1;
             $isJediPowerUsed = $ship2UsedJediPowers;
+            $winnerHP = $ship1Health;
+            $looserHP = $ship2Health;
         } else {
             $winningShip = $ship1;
             $losingShip = $ship2;
             $isJediPowerUsed = $ship1UsedJediPowers;
+            $winnerHP = $ship1Health;
+            $looserHP = $ship2Health;
         }
 
         return new BattleResult(
             $winningShip,
             $losingShip,
-            $isJediPowerUsed
+            $isJediPowerUsed,
+            $winnerHP,
+            $looserHP
         );
     }
 

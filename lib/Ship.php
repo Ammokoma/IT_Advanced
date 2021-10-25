@@ -2,14 +2,19 @@
 
 declare(strict_types=1);
 
-
-
 class Ship
 {
-    private ?string $name = null;
+    private string $name;
     private int $weaponPower = 0;
     private int $strength = 1;
     private int $jediFactor = 0;
+    private bool $underRepair;
+
+    public function __construct(string $name)
+    {
+        $this->underRepair = random_int(0, 100) < 30;
+        $this->name = $name;
+    }
 
     public function getName(): ?string
     {
@@ -18,6 +23,10 @@ class Ship
 
     public function setName(?string $name): self
     {
+        if (empty($name)) {
+            throw new LogicException('Name cannot be empty');
+        }
+
         $this->name = $name;
         return $this;
     }
@@ -74,5 +83,15 @@ class Ship
             $this->getJediFactor(),
             $this->getStrength()
         );
+    }
+
+    public function isFunctional(): bool
+    {
+        return !$this->underRepair;
+    }
+
+    public function isGivenShipHaveMoreStrength(Ship $ship): bool
+    {
+        return $ship->getStrength() > $this->getStrength();
     }
 }
